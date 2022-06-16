@@ -1,21 +1,19 @@
 <?php
-echo "........Welcome to Employee Wage Computation.........";
+echo "........Welcome to Employee Wage Computation......... \n";
 
 function emp(){
     $is_present = 1;
     $is_absent = 0;
-    $random = 0;
-
-        if($random == $is_present){
+    $r= rand(0 , 1);
+    
+        if($r == $is_present){
             echo "Employee is present";
-        }else{
+        }else if($r == $is_absent){
             echo "Employee is absent";
+          
         }
-}
+        }
 emp();
-
-
-
 
 
 ?>
