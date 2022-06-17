@@ -1,30 +1,28 @@
 <?php
 echo "........Welcome to Employee Wage Computation......... \n";
 
-function emp(){
+function emp()
+{
     $is_present = 1;
-    $is_parttime =2;
-    $r= rand(0 , 2);
-    $working_hour = 8;
+    $is_parttime = 2;
+    $r = rand(0, 2);
     $per_hour = 20;
-    $parttime_hour = 4;
-    $daily_wage =0;
-    
-    if($r == $is_present){
-        $daily_wage = $working_hour * $per_hour;
+    $daily_wage = 0;
+    $working_hour = 0;
+
+    if ($r == $is_present) {
+        $working_hour = 8;
         echo "Employee is present \n";
-        echo " Dailywage = $daily_wage ";
-    }else if($r == $is_parttime){
+        
+    } else if ($r == $is_parttime) {
+        $working_hour = 4;
         echo "Employee is parttime \n";
-        $daily_wage = $parttime_hour * $per_hour;
-        echo " Dailywage = $daily_wage ";
-    }else{
-        echo "Employee is absent";
+    } else {
+        echo "Employee is absent \n";
         $daily_wage = 0;
     }
 
-        }
+    $daily_wage = $working_hour * $per_hour;
+    echo " Dailywage = $daily_wage ";
+}
 emp();
-
-
-?>
