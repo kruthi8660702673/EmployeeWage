@@ -1,40 +1,44 @@
 <?php
 echo "........Welcome to Employee Wage Computation......... \n";
+class EmployeeWage{
+    const is_FullTime = 1;
+    const is_PartTime = 2;
+    const per_hour = 20;
+    const max_Working_Days = 20;
+    const max_Working_Hours = 100;
 
-function emp(){
-    $is_FullTime = 1;
-    $is_PartTime = 2;
-    $is_Absent = 0;
-    $per_hour = 20;
-    $working_hour = 0;
-    $max_Working_Days = 20;
-    $working_Day = 0;   
-    $total_Working_Hours =0;
-    $max_Working_Hours = 100;
-    $montly_Wage = 0;
-    while($working_Day <= $max_Working_Days && $working_hour <= $max_Working_Hours){
-        $random = rand(0, 2);
-        echo "days" . $working_Day ;
-        switch ($random) {
-            case $is_FullTime:
-                $working_hour = 8;
-                echo "Employee is fulltime \n";
-                break;
-            case $is_PartTime:
-                $working_hour = 4;
-                echo "Employee is parttime \n";
-                break;
-            case $is_Absent:
-                echo "Employee is absent \n";
-                $working_hour = 0;
-                break;
+    const is_Absent = 0;
+    public $working_hour = 0;
+    public $working_Day = 0;   
+    public $total_Working_Hours =0;
+    public $montly_Wage = 0;
+    function emp(){
+   
+        while($this->working_Day <= EmployeeWage :: max_Working_Days && $this->working_hour <= EmployeeWage :: max_Working_Hours){
+            $random = rand(0, 2);
+            echo "days" . $this->working_Day ;
+            switch ($random) {
+                case 1:
+                    $working_hour = 8;
+                    echo "Employee is fulltime \n";
+                    break;
+                case 2:
+                    $working_hour = 4;
+                    echo "Employee is parttime \n";
+                    break;
+                case 0:
+                    echo "Employee is absent \n";
+                    $working_hour = 0;
+                    break;
+            }
+            $this->working_Day++;
+            $this->total_Working_Hours =  $this->total_Working_Hours + $working_hour;
         }
-        $working_Day++;
-        $total_Working_Hours =  $total_Working_Hours + $working_hour;
-    }
-    echo $total_Working_Hours;
-    $montly_Wage = $total_Working_Hours * $per_hour;
-        echo "Employee total monthly wage is : $" . $montly_Wage . "\n";
-}  
-emp();
+        echo $this->total_Working_Hours ."\n";
+        $this->montly_Wage = $this->total_Working_Hours * EmployeeWage::per_hour;
+            echo "Employee total monthly wage is : $" . $this->montly_Wage . "\n";
+    }  
+}
+$employee = new EmployeeWage();
+$employee ->emp();
 ?>
