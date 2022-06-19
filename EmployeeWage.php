@@ -15,15 +15,15 @@ function emp(){
         echo "Day " . $working_Day . "\n";
 
     switch ($random) {
-        case 1:
+        case $is_FullTime:
             $working_hour = 8;
             echo "Employee is present \n";
             break;
-        case 2:
+        case $is_PartTime:
             $working_hour = 4;
             echo "Employee is parttime \n";
             break;
-        case 0:
+        case $is_Absent:
             echo "Employee is absent \n";
             $working_hour = 0;
             break;
