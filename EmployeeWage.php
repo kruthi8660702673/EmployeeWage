@@ -38,7 +38,23 @@ class EmployeeWage{
         $this->montly_Wage = $this->total_Working_Hours * EmployeeWage::per_hour;
             echo "Employee total monthly wage is : $" . $this->montly_Wage . "\n";
     }  
+    function addCompanies()
+    {
+        $companies = [];
+        $num = readline("Enter the number of companies to be added : ");
+        for ($i = 1; $i <= $num; $i++) {
+            $companyName = readline("Enter the name of the company: ");
+            echo "wage calculation for the company " . $companyName . "\n";
+            $wagePerHour = readline("Enter the wage per hour for this company: ");
+            $maxWorkingDays = readline("Enter the max working days per month: ");
+            $maxWorkingHours = readline("Enter the max working hour per month: ");
+            $companies[$i] = [$companyName, $wagePerHour, $maxWorkingDays, $maxWorkingHours];
+            EmployeeWage::emp($wagePerHour, $maxWorkingDays, $maxWorkingHours);
+            $this->workingDays = 0;                                         //make workimg days zero to initiate from zero in next loop
+        }
+    }
 }
 $employee = new EmployeeWage();
 $employee ->emp();
+$employee -> addCompanies();
 ?>
