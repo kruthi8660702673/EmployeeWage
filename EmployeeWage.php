@@ -6,12 +6,21 @@ class EmployeeWage{
     const per_hour = 20;
     const max_Working_Days = 20;
     const max_Working_Hours = 100;
-
     const is_Absent = 0;
     public $working_hour = 0;
     public $working_Day = 0;   
     public $total_Working_Hours =0;
     public $montly_Wage = 0;
+    public $companyName;
+    public function __construct($company_Name, $wagePer_Hour, $maxWorking_Days, $maxWorking_Hours)
+    {
+
+        $this->companyName = $company_Name;
+        $this->max_Working_Days = $maxWorking_Days;
+        $this->max_Working_Hours = $maxWorking_Hours;
+        $this->per_hour = $wagePer_Hour;
+    }
+
     function emp(){
    
         while($this->working_Day <= EmployeeWage :: max_Working_Days && $this->working_hour <= EmployeeWage :: max_Working_Hours){
@@ -50,11 +59,15 @@ class EmployeeWage{
             $maxWorkingHours = readline("Enter the max working hour per month: ");
             $companies[$i] = [$companyName, $wagePerHour, $maxWorkingDays, $maxWorkingHours];
             EmployeeWage::emp($wagePerHour, $maxWorkingDays, $maxWorkingHours);
-            $this->workingDays = 0;                                         //make workimg days zero to initiate from zero in next loop
+            $this->workingDays = 0;                                         
         }
     }
 }
-$employee = new EmployeeWage();
-$employee ->emp();
-$employee -> addCompanies();
+$company1 = new EmployeeWage("Toyota", 20, 100, 8 );
+echo $company1 -> emp();
+$company2 = new EmployeeWage("Ford", 22, 90, 6 );
+echo $company2 -> emp();
+$companyarray = array($company1, $company2);
+print_r($companyarray);
+
 ?>
