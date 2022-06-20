@@ -67,7 +67,9 @@ $company1 = new EmployeeWage("Toyota", 20, 100, 8 );
 echo $company1 -> emp();
 $company2 = new EmployeeWage("Ford", 22, 90, 6 );
 echo $company2 -> emp();
-$companyarray = array($company1, $company2);
-print_r($companyarray);
-
+$companyarray = [$company1, $company2];
+//print_r($companyarray);
+foreach ($companyarray as $result){
+    print_r($result);
+}
 ?>
